@@ -38,6 +38,8 @@ python app.py
 5. Visit `http://127.0.0.1:5000` in your browser
 
 ## Project Structure
+
+```
 newsprint/
 ├── app.py              # Flask routes
 ├── feeds.py            # RSS fetching logic
@@ -48,6 +50,7 @@ newsprint/
 │   └── style.css       # Vintage broadsheet styling
 ├── .env                # API key (not committed)
 └── requirements.txt    # Dependencies
+```
 
 ## Notes
 
