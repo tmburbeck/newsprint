@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2ead8;
+    color: #1a1a1a;
+    font-family: 'Libre Baskerville', serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.masthead {
+    text-align: center;
+    border-top: 6px double #1a1a1a;
+    border-bottom: 6px double #1a1a1a;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+.masthead h1 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.masthead p {
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.articles {
+    column-count: 3;
+    column-gap: 30px;
+    column-rule: 1px solid #1a1a1a;
+}
+
+.article {
+    break-inside: avoid;
+    margin-bottom: 24px;
+}
+
+.source {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+}
+
+.article h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 4px 0 8px 0;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article h2 a {
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.article h2 a:hover {
+    text-decoration: underline;
+}
+
+.summary {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.date {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 16px 0;
+}
+.lead-story {
+    border-top: 3px solid #1a1a1a;
+    border-bottom: 3px solid #1a1a1a;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.lead-story .source {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #555;
+}
+
+.lead-story h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 8px 0;
+}
+
+.lead-story h2 a {
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.lead-story h2 a:hover {
+    text-decoration: underline;
+}
+
+.lead-story .summary {
+    font-size: 16px;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.section-rule {
+    border: none;
+    border-top: 3px double #1a1a1a;
+    margin-bottom: 30px;
+}
