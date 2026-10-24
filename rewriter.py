@@ -1,28 +1,37 @@
-import json
 import hashlib
-
-CACHE_FILE = "cache.json"
-
-def load_cache():
-    if os.path.exists(CACHE_FILE):
-        with open(CACHE_FILE, "r") as f:
-            return json.load(f)
-    return {}
-
-def save_cache(cache):
-    with open(CACHE_FILE, "w") as f:
-        json.dump(cache, f)
-
+import json
 import os
+import re
+
 import anthropic
 from dotenv import load_dotenv
 
 load_dotenv()
 
+CACHE_FILE = "cache.json"
+
 client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 
+def load_cache():
+    if os.path.exists(CACHE_FILE):
+        try:
+            with open(CACHE_FILE, "r") as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            return {}
+    return {}
+
+
+def save_cache(cache):
+    with open(CACHE_FILE, "w") as f:
+        json.dump(cache, f)
+
+
 def pick_lead_story(articles):
+    if not articles:
+        return None
+
     headlines = "\n".join(
         [f"{i + 1}. [{a['source']}] {a['title']}" for i, a in enumerate(articles)]
     )
@@ -30,9 +39,9 @@ def pick_lead_story(articles):
     key = hashlib.md5(headlines.encode()).hexdigest()
     cache = load_cache()
 
-    if key in cache:
-        index = cache[key]
-        return articles[index]
+    cached = cache.get(key)
+    if isinstance(cached, int) and 0 <= cached < len(articles):
+        return articles[cached]
 
     message = client.messages.create(
         model="claude-sonnet-4-6",
@@ -45,15 +54,15 @@ def pick_lead_story(articles):
         ]
     )
 
-    response = message.content[0].text.strip()
-    index = int(''.join(filter(str.isdigit, response))) - 1
+    match = re.search(r"\d+", message.content[0].text)
+    index = int(match.group()) - 1 if match else 0
+    if not (0 <= index < len(articles)):
+        index = 0
+
     cache[key] = index
     save_cache(cache)
     return articles[index]
 
-    response = message.content[0].text.strip()
-    index = int(''.join(filter(str.isdigit, response))) - 1
-    return articles[index]
 
 def rewrite_headline(title, source):
     cache = load_cache()

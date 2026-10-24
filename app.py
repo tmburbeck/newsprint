@@ -7,7 +7,12 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     articles = get_articles()
+    print(f"Fetched {len(articles)} articles")  # temporary: remove once the feeds are confirmed working
+
     lead = pick_lead_story(articles)
+    if lead is None:
+        return "No stories available right now. Check the RSS feeds.", 503
+
     remaining = [a for a in articles if a != lead]
 
     lead['title'] = rewrite_headline(lead['title'], lead['source'])
