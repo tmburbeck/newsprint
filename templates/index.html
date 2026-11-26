@@ -2,34 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Daily Newsprint</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <div class="masthead">
+    <!-- Newspaper name across the top -->
+    <header class="masthead">
         <h1>The Daily Newsprint</h1>
         <p>All the news fit to print</p>
-    </div>
+    </header>
 
-    <div class="lead-story">
+    <!-- The single most important story, shown large -->
+    <article class="lead-story">
         <p class="source">{{ lead.source }}</p>
         <h2><a href="{{ lead.link }}">{{ lead.title }}</a></h2>
         <p class="summary">{{ lead.summary }}</p>
         <p class="date">{{ lead.published }}</p>
-    </div>
+    </article>
 
     <hr class="section-rule">
 
+    <!-- Every other story, laid out in newspaper columns -->
     <div class="articles">
         {% for article in articles %}
-        <div class="article">
+        <article class="article">
             <p class="source">{{ article.source }}</p>
             <h2><a href="{{ article.link }}">{{ article.title }}</a></h2>
             <p class="summary">{{ article.summary }}</p>
             <p class="date">{{ article.published }}</p>
             <hr>
-        </div>
+        </article>
         {% endfor %}
     </div>
 
