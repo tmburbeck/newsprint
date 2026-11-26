@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;700&display=swap');
 
+/* ---- Page basics ---- */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +16,8 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+
+/* ---- Masthead: the newspaper name at the top ---- */
 
 .masthead {
     text-align: center;
@@ -36,6 +40,8 @@ body {
     letter-spacing: 3px;
     text-transform: uppercase;
 }
+
+/* ---- Story columns ---- */
 
 .articles {
     column-count: 3;
@@ -91,6 +97,8 @@ hr {
     border-top: 1px solid #1a1a1a;
     margin: 16px 0;
 }
+/* ---- Lead story: the biggest story, shown above the columns ---- */
+
 .lead-story {
     border-top: 3px solid #1a1a1a;
     border-bottom: 3px solid #1a1a1a;
@@ -136,4 +144,16 @@ hr {
     border: none;
     border-top: 3px double #1a1a1a;
     margin-bottom: 30px;
+}
+
+/* ---- Phones and small screens: one column, smaller masthead ---- */
+
+@media (max-width: 700px) {
+    .articles {
+        column-count: 1;
+    }
+
+    .masthead h1 {
+        font-size: 44px;
+    }
 }
