@@ -2,6 +2,8 @@
 
 A Flask web application that gathers real-time news from major outlets and reimagines it as a vintage 1920s broadsheet.
 
+![The Daily Newsprint](docs/preview.png)
+
 ## Features
 
 - **Live RSS feeds** from BBC, NPR, and The Hill, updated on every page load
